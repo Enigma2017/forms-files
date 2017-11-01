@@ -22,6 +22,8 @@ if ($_POST) {
     // tell user that form is invlalid
     $message = 'Form is not valid';
 }
-$comments = loadComments();
+// $comments = loadComments();
+include 'censura.php'; // тут формируем массив сообщений $comments, которые прошли цензуру
+//
 include 'layout.php';
 ?>

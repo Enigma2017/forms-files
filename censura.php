@@ -1,6 +1,8 @@
 <?php
-$comments = loadComments();
-    $comments[] = $comment;
+
+function strMat($comments)
+{
+    $censComm = [];
     $censor = array(
         'бля',
         'ху',
@@ -13,11 +15,16 @@ $comments = loadComments();
         'чм',
         'деби',
     )
-    $replace = '<b>***</br>';
-    $comments[] = str_replace($censor, $replace, $comments[]);
-    function strMat($comments[])
-    {
-        print_r($comments[]). '<br>';
+    $replace = '<b>***</b>';
+    if (!empty($comments)) {
+        foreach ($comments as $com) {
+            $censComm[] = str_replace($censor, $replace, $com);
+        }
     }
-    strMat($comments[]);
-    ?>
+    return $censComm;
+}
+
+$comments = loadComments();
+$comments = strMat($comments);
+
+?>
